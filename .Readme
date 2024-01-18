@@ -1,0 +1,9 @@
+baseURL for Happi Discount App: https://tm-api.happimobiles.com
+baseURL for Happi Ticket management App: https://tm-api.happimobiles.com
+POSTMAN DOCUMENTATION:https://documenter.getpostman.com/view/19414622/2s946h8Y73
+LOG SERVEICES
+URL:https://logs.iipl.app/login
+username:admin
+password:|v0Ry2023
+
+LOCAL MONDB URL:mongodb://happimain:tUDuD9okePhlyl%2B@happi-main-db.happimobiles.com:27017/?authMechanism=DEFAULT

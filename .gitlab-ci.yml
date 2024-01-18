@@ -1,0 +1,28 @@
+stages:
+  - qa
+
+variables:
+  #IMAGE_REGISTRY: 'gcr.io/ornate-reef-377904'
+  #IMAGE_REPOSITORY: 'happi-api-qa'
+  IMAGE_NAME: 'happi-ticket-api'
+  IMAGE_TAG: 'latest'
+  CONTAINER_NAME: 'happi-ticket-mgmt-api'
+  GCLOUD_PROJECT_ID: 'happi-ticket-project'
+  GCLOUD_REGION: us-central1
+  GCLOUD_KEY_PATH: C:\Users\ADMIN\agent\happi-service-account\happi-ticket-api-gcloudkey.json
+  GCLOUD_SERVICE_ACCOUNT: happi-ticket-api-gcloudkey@happi-ticket-project.iam.gserviceaccount.com
+  GCLOUD_RUN_SERVICE: happi-ticket-api-qa
+
+qa-job:
+  stage: qa
+  script: 
+    - docker build -t ${IMAGE_NAME}:$IMAGE_TAG .
+    - docker stop $CONTAINER_NAME
+    - docker rm $CONTAINER_NAME
+    - docker run --network=host -d --restart unless-stopped --name $CONTAINER_NAME ${IMAGE_NAME}:$IMAGE_TAG
+
+  only:
+    - master
+
+  tags:
+    - main-runner
